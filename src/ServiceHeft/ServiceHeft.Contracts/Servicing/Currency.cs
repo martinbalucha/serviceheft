@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ServiceHeft.Contracts.Servicing;
 
-namespace ServiceHeft.Contracts.Servicing;
-
-public class Currency
+public record Currency(string Name)
 {
-    public string Name { get; set; }
+    public static Currency NoCurrency => new Currency(string.Empty);
 }

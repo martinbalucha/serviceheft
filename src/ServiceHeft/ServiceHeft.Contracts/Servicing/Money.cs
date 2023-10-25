@@ -11,12 +11,21 @@ public record Money : IMoney, IComparable<Money>
     public decimal Amount { get; }
     public Currency Currency { get; }
 
-    public Money(decimal amount, Currency currency)
+    private Money(decimal amount, Currency currency)
     {
-        CheckIfAmountIsNotNegative(amount);
-
         Amount = amount; 
         Currency = currency;
+    }
+
+    public static IMoney? Create(decimal amount, Currency currency)
+    {
+        if (amount < 0)
+        {
+            return null;
+        }
+
+
+        return new Money(amount, currency);
     }
 
     public IMoney Add(IMoney money)
@@ -37,13 +46,5 @@ public record Money : IMoney, IComparable<Money>
     public int CompareTo(IMoney? other)
     {
         throw new NotImplementedException();
-    }
-
-    private static void CheckIfAmountIsNotNegative(decimal amount)
-    {
-        if (amount < 0)
-        {
-            throw new InvalidOperationException("The amount of money cannot be negative.");
-        }
     }
 }
