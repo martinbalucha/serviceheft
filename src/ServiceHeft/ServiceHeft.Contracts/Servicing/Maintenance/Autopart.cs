@@ -11,7 +11,7 @@ public class Autopart : Entity
     public string Name { get; set; }
     public string OemCode { get; set; }
     public string Producer { get; set; }
-    public Money Price { get; set; }
+    public IMoney Price { get; set; }
 
     public Autopart(Guid id) : base(id)
     {
