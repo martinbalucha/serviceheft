@@ -25,7 +25,7 @@ public class ServiceRecord : Entity
         PerformedOn = DateTime.UtcNow;
     }
 
-    public void PerformService(Autopart autopart, IMoney laborCost)
+    public void PerformAutopartChange(Autopart autopart, IMoney laborCost)
     {
         _partsChanged.Add(autopart);
         TotalLaborCost.Add(laborCost);
