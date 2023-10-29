@@ -8,4 +8,24 @@ public abstract class Entity
 	{
 		Id = id;
 	}
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is null)
+		{
+			return false;
+		}
+
+		if (obj.GetType() != GetType() || obj is not Entity entity)
+		{
+			return false;
+		}
+
+		return entity.Id == Id;
+    }
+
+    public override int GetHashCode()
+    {
+		return Id.GetHashCode();
+    }
 }
