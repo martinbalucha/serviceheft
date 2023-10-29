@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ServiceHeft.Contracts.Servicing.Common;
+﻿using ServiceHeft.Contracts.Servicing.Common;
 
 namespace ServiceHeft.Contracts.Servicing.Maintenance;
 
@@ -14,7 +9,11 @@ public class Autopart : Entity
     public string Producer { get; set; }
     public IMoney Price { get; set; }
 
-    public Autopart(Guid id) : base(id)
+    public Autopart(Guid id, string name, string oemCode, string producer, IMoney price) : base(id)
     {
+        Name = name;
+        OemCode = oemCode;
+        Producer = producer;
+        Price = price;
     }
 }
