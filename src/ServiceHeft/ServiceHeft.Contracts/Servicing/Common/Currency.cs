@@ -1,4 +1,4 @@
-﻿namespace ServiceHeft.Contracts.Servicing;
+﻿namespace ServiceHeft.Contracts.Servicing.Common;
 
 public record Currency(string Name)
 {

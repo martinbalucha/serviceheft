@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceHeft.Contracts.Servicing;
+namespace ServiceHeft.Contracts.Servicing.Common;
 
 public record Money : IMoney, IComparable<Money>
 {
@@ -13,7 +13,7 @@ public record Money : IMoney, IComparable<Money>
 
     private Money(decimal amount, Currency currency)
     {
-        Amount = amount; 
+        Amount = amount;
         Currency = currency;
     }
 

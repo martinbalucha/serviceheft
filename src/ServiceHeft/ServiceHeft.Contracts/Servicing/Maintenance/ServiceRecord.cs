@@ -1,4 +1,6 @@
-﻿namespace ServiceHeft.Contracts.Servicing.Maintenance;
+﻿using ServiceHeft.Contracts.Servicing.Common;
+
+namespace ServiceHeft.Contracts.Servicing.Maintenance;
 
 public class ServiceRecord : Entity
 {

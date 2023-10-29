@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceHeft.Contracts.Servicing;
+namespace ServiceHeft.Contracts.Servicing.Common;
 
 public interface IMoney : IComparable<IMoney>
 {

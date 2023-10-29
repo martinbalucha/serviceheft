@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ServiceHeft.Contracts.Servicing.Common;
 
 namespace ServiceHeft.Contracts.Servicing.Maintenance;
 
