@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ServiceHeft.Contracts.Servicing.Common;
+﻿namespace ServiceHeft.Contracts.Servicing.Common;
 
 public record Money : IMoney, IComparable<Money>
 {
