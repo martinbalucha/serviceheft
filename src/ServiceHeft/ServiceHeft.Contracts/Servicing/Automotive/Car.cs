@@ -6,15 +6,15 @@ public class Car : Entity
 {
     private readonly List<ServiceRecord> serviceRecords = new();
 
-    public string Vin { get; set; }
-    public ModelInfo ModelInfo { get; set; }
+    public string Vin { get; private set; }
+    public ModelInfo ModelInfo { get; private set; }
     public DateTime ProducedOn { get; init; }
     public string LicencePlate { get; set; }
     public int DistanceDrivenInKilometers { get; set; }
     public Engine Engine { get; set; }
     public IReadOnlyList<ServiceRecord> ServiceRecords => serviceRecords;
 
-    public Car(Guid id, List<ServiceRecord> serviceRecords, string vin, ModelInfo modelInfo, 
+    public Car(Guid id, string vin, ModelInfo modelInfo, 
         DateTime producedOn, string licencePlate, int distanceDrivenInKilometers, Engine engine) : base(id)
     {
         Vin = vin;
@@ -23,6 +23,5 @@ public class Car : Entity
         LicencePlate = licencePlate;
         DistanceDrivenInKilometers = distanceDrivenInKilometers;
         Engine = engine;
-        this.serviceRecords = serviceRecords;
     }
 }
