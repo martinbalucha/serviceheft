@@ -15,8 +15,11 @@ public class ServiceRecord : Entity
 
     public IMoney TotalCost => LaborCost;
 
-    public ServiceRecord(Guid id) : base(id)
+    public ServiceRecord(Guid id, Guid carId, DateTime happenedOn, string name, string description, IMoney laborCost) : base(id)
     {
+        CarId = carId;
+        Name = name;
+        Description = description;
+        LaborCost = laborCost;
     }
-
 }
