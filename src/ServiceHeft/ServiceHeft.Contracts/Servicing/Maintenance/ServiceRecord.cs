@@ -1,25 +1,33 @@
-﻿using ServiceHeft.Contracts.Servicing.Common;
+﻿using ServiceHeft.Contracts.Servicing.Automotive;
+using ServiceHeft.Contracts.Servicing.Common;
 
 namespace ServiceHeft.Contracts.Servicing.Maintenance;
 
 public class ServiceRecord : Entity
 {
-    private readonly List<Autopart> partsChanged = new ();
+    private readonly List<Autopart> _partsChanged = new ();
 
-    public Guid CarId { get; set; }
-    public DateTime HappenedOn { get; init; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public IMoney LaborCost { get; set; }
-    public IReadOnlyList<Autopart> PartsChanged => partsChanged;
+    public Car Car { get; private set; }
+    public DateTime PerformedOn { get; private set; }
+    public string Name { get; private set; }
+    public string Description { get; private set; }
+    public IMoney TotalLaborCost { get; private set; }
+    public IReadOnlyList<Autopart> PartsChanged => _partsChanged;
 
-    public IMoney TotalCost => LaborCost;
+    public IMoney TotalCost => TotalLaborCost;
 
-    public ServiceRecord(Guid id, Guid carId, DateTime happenedOn, string name, string description, IMoney laborCost) : base(id)
+    public ServiceRecord(Guid id, Car car, string name, string description, IMoney laborCost) : base(id)
     {
-        CarId = carId;
+        Car = car;
         Name = name;
         Description = description;
-        LaborCost = laborCost;
+        TotalLaborCost = laborCost;
+        PerformedOn = DateTime.UtcNow;
+    }
+
+    public void PerformService(Autopart autopart, IMoney laborCost)
+    {
+        _partsChanged.Add(autopart);
+        TotalLaborCost.Add(laborCost);
     }
 }
