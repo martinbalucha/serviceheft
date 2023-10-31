@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ServiceHeft.Webservice.CarMaintenance.Requests;
 
-namespace ServiceHeft.Webservice;
+namespace ServiceHeft.Webservice.CarMaintenance;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -8,7 +9,7 @@ public class CarController : ControllerBase
 {
 
     [HttpPost]
-    public Task<IActionResult> CreateCar()
+    public Task<IActionResult> CreateCar(CreateCarRequest request)
     {
         throw new NotImplementedException();
     }
@@ -26,8 +27,8 @@ public class CarController : ControllerBase
     }
 
     [HttpGet]
-    public Task<IActionResult> GetCar() 
-    { 
-        throw new NotImplementedException(); 
+    public Task<IActionResult> GetCar(GetCarRequest request)
+    {
+        throw new NotImplementedException();
     }
 }
