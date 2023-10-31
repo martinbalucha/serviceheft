@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHeft.Server", "ServiceHeft.Server\ServiceHeft.Server.csproj", "{0AC57705-5447-4829-B3A7-D5D124F48D9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Server", "ServiceHeft.Server\ServiceHeft.Server.csproj", "{0AC57705-5447-4829-B3A7-D5D124F48D9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHeft.Contracts", "ServiceHeft.Contracts\ServiceHeft.Contracts.csproj", "{CC4A9F55-4465-416B-A728-2CAB12766A1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Contracts", "ServiceHeft.Contracts\ServiceHeft.Contracts.csproj", "{CC4A9F55-4465-416B-A728-2CAB12766A1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHeft.Domain", "ServiceHeft.Domain\ServiceHeft.Domain.csproj", "{7745C2A8-0CC1-4CAC-A656-517BAF9A5F88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Domain", "ServiceHeft.Domain\ServiceHeft.Domain.csproj", "{7745C2A8-0CC1-4CAC-A656-517BAF9A5F88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHeft.Webservice", "ServiceHeft.Webservice\ServiceHeft.Webservice.csproj", "{2949FD52-F763-40B5-A96E-329D91EC1830}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Webservice", "ServiceHeft.Webservice\ServiceHeft.Webservice.csproj", "{2949FD52-F763-40B5-A96E-329D91EC1830}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHeft.Domain.Test", "ServiceHeft.Domain.Test\ServiceHeft.Domain.Test.csproj", "{8CADA885-2308-4DB8-8866-D13D6082FF94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Domain.Test", "ServiceHeft.Domain.Test\ServiceHeft.Domain.Test.csproj", "{8CADA885-2308-4DB8-8866-D13D6082FF94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
