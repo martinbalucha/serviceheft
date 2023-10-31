@@ -1,3 +1,4 @@
+using ServiceHeft.Webservice.CarMaintenance;
 
 namespace ServiceHeft.Server;
 
@@ -9,10 +10,12 @@ public class Program
 
         // Add services to the container.
 
-        builder.Services.AddControllers();
+        builder.Services.AddControllers().AddApplicationPart(typeof(CarController).Assembly);
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        builder.WebHost.UseKestrel(o => o.AllowAlternateSchemes = true);
 
         var app = builder.Build();
 
@@ -22,8 +25,6 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-
-        app.UseHttpsRedirection();
 
         app.UseAuthorization();
 
