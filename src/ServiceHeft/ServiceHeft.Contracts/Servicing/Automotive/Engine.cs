@@ -1,6 +1,6 @@
 ﻿namespace ServiceHeft.Contracts.Servicing.Automotive;
 
-public record Engine
+public class Engine
 {
     public string Name { get; set; }
     public FuelType FuelType { get; set; }
