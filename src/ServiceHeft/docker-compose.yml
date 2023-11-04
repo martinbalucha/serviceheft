@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  serviceheft.server:
+    image: ${DOCKER_REGISTRY-}serviceheftserver
+    build:
+      context: .
+      dockerfile: ServiceHeft.Server/Dockerfile
