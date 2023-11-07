@@ -1,35 +1,49 @@
+using Microsoft.EntityFrameworkCore;
+using ServiceHeft.Server.Configuration;
+using ServiceHeft.Server.Persistence;
 using ServiceHeft.Webservice.CarMaintenance;
 
-namespace ServiceHeft.Server;
+var builder = WebApplication.CreateBuilder(args);
 
-public class Program
+builder.Configuration.AddJsonFile("SqlServerConfiguration.json");
+
+// Add services to the container.
+
+builder.Services.AddControllers().AddApplicationPart(typeof(CarController).Assembly);
+
+builder.Services.AddDbContext<ServiceHeftDbContext>(dbContextBulder =>
 {
-    public static void Main(string[] args)
+    string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+
+    dbContextBulder.UseSqlServer(connectionString, sqlServerAction =>
     {
-        var builder = WebApplication.CreateBuilder(args);
+        var sqlServerConfiguration = builder.Configuration.GetSection(nameof(SqlServerConfiguration)).Get<SqlServerConfiguration>() 
+                                        ?? throw new ArgumentException("The SQL Server configuration is missing.");
 
-        // Add services to the container.
+        sqlServerAction.EnableRetryOnFailure(sqlServerConfiguration.RetryOnFailureCount);
+        sqlServerAction.CommandTimeout(sqlServerConfiguration.CommandTimeoutInSeconds);
+    });
+});
 
-        builder.Services.AddControllers().AddApplicationPart(typeof(CarController).Assembly);
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-        builder.WebHost.UseKestrel(o => o.AllowAlternateSchemes = true);
+builder.WebHost.UseKestrel(o => o.AllowAlternateSchemes = true);
 
-        var app = builder.Build();
+var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
-        app.UseSwagger();
-        app.UseSwaggerUI(options =>
-        {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Serviceheft API");
-        });
+// Configure the HTTP request pipeline.
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Serviceheft API");
+});
 
-        app.UseAuthorization();
+app.UseAuthorization();
 
-        app.MapControllers();
+app.UseHttpsRedirection();
 
-        app.Run();
-    }
-}
+app.MapControllers();
+
+app.Run();

@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Webservice", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Domain.Test", "ServiceHeft.Domain.Test\ServiceHeft.Domain.Test.csproj", "{8CADA885-2308-4DB8-8866-D13D6082FF94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHeft.Persistence.EntityFramework", "..\ServiceHeft.Persistence.EntityFramework\ServiceHeft.Persistence.EntityFramework.csproj", "{05A41503-DCB7-41E4-9FAA-B57FEC7491EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8CADA885-2308-4DB8-8866-D13D6082FF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CADA885-2308-4DB8-8866-D13D6082FF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CADA885-2308-4DB8-8866-D13D6082FF94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05A41503-DCB7-41E4-9FAA-B57FEC7491EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05A41503-DCB7-41E4-9FAA-B57FEC7491EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05A41503-DCB7-41E4-9FAA-B57FEC7491EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05A41503-DCB7-41E4-9FAA-B57FEC7491EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
