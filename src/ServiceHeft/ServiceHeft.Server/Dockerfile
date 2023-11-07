@@ -5,6 +5,7 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+RUN dotnet dev-certs https
 WORKDIR /src
 COPY ["ServiceHeft.Server/ServiceHeft.Server.csproj", "ServiceHeft.Server/"]
 COPY ["ServiceHeft.Webservice/ServiceHeft.Webservice.csproj", "ServiceHeft.Webservice/"]
@@ -14,6 +15,7 @@ WORKDIR "/src/ServiceHeft.Server"
 RUN dotnet build "ServiceHeft.Server.csproj" -c Release -o /app/build
 
 FROM build AS publish
+COPY --from=build /root/.dotnet/corefx/cryptography/x509stores/my/*
 RUN dotnet publish "ServiceHeft.Server.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
