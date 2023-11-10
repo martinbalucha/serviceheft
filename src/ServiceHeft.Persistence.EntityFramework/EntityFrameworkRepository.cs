@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ServiceHeft.Contracts;
-using ServiceHeft.Contracts.Common;
+using ServiceHeft.Maintenance.Contracts;
+using ServiceHeft.Maintenance.Contracts.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;

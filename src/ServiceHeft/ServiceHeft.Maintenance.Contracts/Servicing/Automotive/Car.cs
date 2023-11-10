@@ -1,6 +1,6 @@
-﻿using ServiceHeft.Contracts.Servicing.Maintenance;
+﻿using ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
 
-namespace ServiceHeft.Contracts.Servicing.Automotive;
+namespace ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
 
 public class Car : Entity
 {

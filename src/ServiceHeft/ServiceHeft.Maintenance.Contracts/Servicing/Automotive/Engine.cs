@@ -1,4 +1,4 @@
-﻿namespace ServiceHeft.Contracts.Servicing.Automotive;
+﻿namespace ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
 
 public class Engine
 {

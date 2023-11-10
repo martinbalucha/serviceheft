@@ -1,6 +1,6 @@
-﻿using ServiceHeft.Contracts.Servicing.Common;
+﻿using ServiceHeft.Maintenance.Contracts.Servicing.Common;
 
-namespace ServiceHeft.Contracts.Servicing.Maintenance;
+namespace ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
 
 public class Autopart : Entity
 {

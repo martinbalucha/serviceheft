@@ -1,7 +1,7 @@
-﻿using ServiceHeft.Contracts.Servicing.Automotive;
-using ServiceHeft.Contracts.Servicing.Common;
+﻿using ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
+using ServiceHeft.Maintenance.Contracts.Servicing.Common;
 
-namespace ServiceHeft.Contracts.Servicing.Maintenance;
+namespace ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
 
 public class ServiceRecord : Entity
 {

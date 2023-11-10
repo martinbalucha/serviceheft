@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ServiceHeft\ServiceHeft.Contracts\ServiceHeft.Maintenance.Contracts.csproj" />
+    <ProjectReference Include="..\ServiceHeft\ServiceHeft.Maintenance.Contracts\ServiceHeft.Maintenance.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

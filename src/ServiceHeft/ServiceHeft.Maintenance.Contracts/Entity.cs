@@ -1,4 +1,4 @@
-﻿namespace ServiceHeft.Contracts;
+﻿namespace ServiceHeft.Maintenance.Contracts;
 
 public abstract class Entity
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ServiceHeft.Contracts.Servicing.Automotive;
-using ServiceHeft.Contracts.Servicing.Maintenance;
+using ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
+using ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
 
 namespace ServiceHeft.Server.Persistence;
 
