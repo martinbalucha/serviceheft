@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ServiceHeft.Contracts\ServiceHeft.Contracts.csproj" />
-    <ProjectReference Include="..\ServiceHeft.Webservice\ServiceHeft.Webservice.csproj" />
+    <ProjectReference Include="..\ServiceHeft.Contracts\ServiceHeft.Maintenance.Contracts.csproj" />
+    <ProjectReference Include="..\ServiceHeft.Webservice\ServiceHeft.Maintenance.Webservice.csproj" />
   </ItemGroup>
 
 </Project>
