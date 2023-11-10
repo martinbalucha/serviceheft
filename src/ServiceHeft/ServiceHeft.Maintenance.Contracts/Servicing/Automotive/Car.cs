@@ -14,8 +14,13 @@ public class Car : Entity
     public Engine Engine { get; set; }
     public IReadOnlyList<ServiceRecord> ServiceRecords => serviceRecords;
 
+    private Car() : base(Guid.Empty)
+    {
+    }
+
     public Car(Guid id, string vin, ModelInfo modelInfo, 
-        DateTime producedOn, string licencePlate, int distanceDrivenInKilometers, Engine engine) : base(id)
+        DateTime producedOn, string licencePlate,
+        int distanceDrivenInKilometers, Engine engine) : base(id)
     {
         Vin = vin;
         ModelInfo = modelInfo;
