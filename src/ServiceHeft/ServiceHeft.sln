@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Maintenance.Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Maintenance.Domain", "ServiceHeft.Maintenance.Domain\ServiceHeft.Maintenance.Domain.csproj", "{982B5945-6698-44B7-AEF6-071499FF37FA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D02769C6-D362-4A4A-B199-B5605613A963}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Maintenance.Domain.Test", "ServiceHeft.Maintenance.Domain.Test\ServiceHeft.Maintenance.Domain.Test.csproj", "{F27280ED-6071-428D-BD86-01845F84B449}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +43,16 @@ Global
 		{982B5945-6698-44B7-AEF6-071499FF37FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{982B5945-6698-44B7-AEF6-071499FF37FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{982B5945-6698-44B7-AEF6-071499FF37FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F27280ED-6071-428D-BD86-01845F84B449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F27280ED-6071-428D-BD86-01845F84B449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F27280ED-6071-428D-BD86-01845F84B449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F27280ED-6071-428D-BD86-01845F84B449}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F27280ED-6071-428D-BD86-01845F84B449} = {D02769C6-D362-4A4A-B199-B5605613A963}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {550EDA95-9B49-48A5-BBE9-53BC585152CE}
