@@ -1,4 +1,4 @@
-﻿namespace ServiceHeft.Server.Configuration;
+﻿namespace ServiceHeft.Server.Application.Configuration;
 
 public record SqlServerConfiguration
 {

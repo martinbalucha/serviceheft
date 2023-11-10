@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using ServiceHeft.Server.Configuration;
-using ServiceHeft.Server.Persistence;
+using ServiceHeft.Persistence.EntityFramework.DataAccess;
+using ServiceHeft.Server.Application.Configuration;
 using ServiceHeft.Webservice.CarMaintenance;
 
 var builder = WebApplication.CreateBuilder(args);

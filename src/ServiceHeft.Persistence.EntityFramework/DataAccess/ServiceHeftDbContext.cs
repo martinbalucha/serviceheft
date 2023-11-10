@@ -2,7 +2,7 @@
 using ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
 using ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
 
-namespace ServiceHeft.Persistence.EntityFramework;
+namespace ServiceHeft.Persistence.EntityFramework.DataAccess;
 
 public class ServiceHeftDbContext : DbContext
 {
