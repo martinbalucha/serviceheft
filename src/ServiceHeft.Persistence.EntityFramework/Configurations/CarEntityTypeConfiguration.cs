@@ -28,6 +28,12 @@ public class CarEntityTypeConfiguration : IEntityTypeConfiguration<Car>
             mi.WithOwner();
         });
 
+        builder.OwnsOne(c => c.Engine, e =>
+        {
+            e.Property<Guid>("CarId");
+            e.WithOwner();
+        });
+
         builder.OwnsMany(c => c.ServiceRecords);
     }
 }
