@@ -8,13 +8,19 @@ public class ServiceRecord : Entity
 {
     private readonly List<Autopart> _partsChanged = new ();
 
-    public Car Car { get; private set; }
+    public Guid CarId { get; private set; }
+
     public DateTime PerformedOn { get; private set; }
+    
     public string Name { get; private set; }
+    
     public string Description { get; private set; }
+
     [NotMapped]
     public IMoney TotalLaborCost { get; private set; }
+
     public IReadOnlyList<Autopart> PartsChanged => _partsChanged;
+
     [NotMapped]
     public IMoney TotalCost => TotalLaborCost;
 
@@ -22,9 +28,9 @@ public class ServiceRecord : Entity
     {
     }
 
-    public ServiceRecord(Guid id, Car car, string name, string description, IMoney laborCost) : base(id)
+    public ServiceRecord(Guid id, Guid carId, string name, string description, IMoney laborCost) : base(id)
     {
-        Car = car;
+        CarId = carId;
         Name = name;
         Description = description;
         TotalLaborCost = laborCost;

@@ -6,6 +6,9 @@ public class Car : Entity
 {
     private readonly List<ServiceRecord> serviceRecords = new();
 
+    /// <summary>
+    /// Vehicle Identification Number
+    /// </summary>
     public string Vin { get; private set; }
     public ModelInfo ModelInfo { get; private set; }
     public DateTime ProducedOn { get; init; }

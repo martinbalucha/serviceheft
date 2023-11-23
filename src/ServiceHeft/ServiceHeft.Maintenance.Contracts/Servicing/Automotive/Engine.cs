@@ -1,14 +1,17 @@
 ﻿namespace ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
 
-public class Engine
+public class Engine : Entity
 {
     public string Name { get; set; }
     public FuelType FuelType { get; set; }
     public int CylinderVolumeInCubicCentimeters { get; set; }
     public int PowerInKilowatts { get; set; }
 
-    public Engine(string name, FuelType fuelType, 
-        int powerInKilowatts, int cylinderVolumeInCubicCentimeters)
+    public Engine(Guid id, 
+        string name, 
+        FuelType fuelType, 
+        int powerInKilowatts, 
+        int cylinderVolumeInCubicCentimeters) : base(id)
     {
         Name = name;
         FuelType = fuelType;
