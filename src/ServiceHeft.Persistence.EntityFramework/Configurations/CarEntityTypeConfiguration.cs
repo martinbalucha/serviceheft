@@ -33,7 +33,5 @@ public class CarEntityTypeConfiguration : IEntityTypeConfiguration<Car>
             e.Property<Guid>("CarId");
             e.WithOwner();
         });
-
-        builder.OwnsMany(c => c.ServiceRecords);
     }
 }
