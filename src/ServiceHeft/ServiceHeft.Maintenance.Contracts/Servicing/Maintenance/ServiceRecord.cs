@@ -1,5 +1,4 @@
-﻿using ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
-using ServiceHeft.Maintenance.Contracts.Servicing.Common;
+﻿using ServiceHeft.Maintenance.Contracts.Servicing.Common;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
