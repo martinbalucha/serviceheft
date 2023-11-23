@@ -1,0 +1,6 @@
+{
+  "SqlServerConfiguration": {
+    "RetryOnFailureCount": 3,
+    "CommandTimeoutInSeconds": 35
+  }
+}

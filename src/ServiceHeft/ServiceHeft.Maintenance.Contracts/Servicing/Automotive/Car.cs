@@ -1,11 +1,14 @@
-﻿using ServiceHeft.Contracts.Servicing.Maintenance;
+﻿using ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
 
-namespace ServiceHeft.Contracts.Servicing.Automotive;
+namespace ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
 
 public class Car : Entity
 {
     private readonly List<ServiceRecord> serviceRecords = new();
 
+    /// <summary>
+    /// Vehicle Identification Number
+    /// </summary>
     public string Vin { get; private set; }
     public ModelInfo ModelInfo { get; private set; }
     public DateTime ProducedOn { get; init; }
@@ -14,8 +17,13 @@ public class Car : Entity
     public Engine Engine { get; set; }
     public IReadOnlyList<ServiceRecord> ServiceRecords => serviceRecords;
 
+    private Car() : base(Guid.Empty)
+    {
+    }
+
     public Car(Guid id, string vin, ModelInfo modelInfo, 
-        DateTime producedOn, string licencePlate, int distanceDrivenInKilometers, Engine engine) : base(id)
+        DateTime producedOn, string licencePlate,
+        int distanceDrivenInKilometers, Engine engine) : base(id)
     {
         Vin = vin;
         ModelInfo = modelInfo;
