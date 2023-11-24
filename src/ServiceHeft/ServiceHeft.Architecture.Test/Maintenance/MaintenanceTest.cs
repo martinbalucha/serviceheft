@@ -1,6 +1,7 @@
 ﻿using NetArchTest.Rules;
 using ServiceHeft.Maintenance.Contracts.Common;
 using ServiceHeft.Maintenance.Domain;
+using ServiceHeft.Persistence.EntityFramework;
 using Xunit;
 
 namespace ServiceHeft.Architecture.Test.Contracts;
@@ -46,6 +47,28 @@ public class MaintenanceTest
 
         // Act
         var dependencyOnContractsResult = Types.InAssembly(assembly).Should().HaveDependencyOn(ContractsNamespace).GetResult();
+        var dependencyOnOtherProjectsResult = Types.InAssembly(assembly).ShouldNot().HaveDependencyOnAny(otherProjects).GetResult();
+
+        // Assert
+        Assert.True(dependencyOnContractsResult.IsSuccessful);
+        Assert.True(dependencyOnOtherProjectsResult.IsSuccessful);
+    }
+
+    [Fact]
+    public void PersistenceEntityFramework_Should_DependSolelyOnContracts()
+    {
+        // Arrange
+        const string repositoryClassesSuffix = "Repository";
+        var assembly = typeof(EntityFrameworkRepository<>).Assembly;
+
+        var otherProjects = new[]
+{
+            DomainNamespace,
+            WebserviceNamespace
+        };
+
+        // Act
+        var dependencyOnContractsResult = Types.InAssembly(assembly).That().HaveNameEndingWith(repositoryClassesSuffix).Should().HaveDependencyOn(ContractsNamespace).GetResult();
         var dependencyOnOtherProjectsResult = Types.InAssembly(assembly).ShouldNot().HaveDependencyOnAny(otherProjects).GetResult();
 
         // Assert
