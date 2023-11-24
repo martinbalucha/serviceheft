@@ -1,5 +1,6 @@
 ﻿using NetArchTest.Rules;
-using ServiceHeft.Maintenance.Contracts;
+using ServiceHeft.Maintenance.Contracts.Common;
+using ServiceHeft.Maintenance.Domain;
 using Xunit;
 
 namespace ServiceHeft.Architecture.Test.Contracts;
@@ -17,7 +18,7 @@ public class MaintenanceTest
         // Arrange
         var assembly = typeof(Entity).Assembly;
 
-        var otherDependencies = new[]
+        var otherProjects = new[]
         {
             DomainNamespace,
             EntityFrameworkNamespace,
@@ -25,11 +26,30 @@ public class MaintenanceTest
         };
 
         // Act
-        var result = Types.InAssembly(assembly).ShouldNot().HaveDependencyOnAny(otherDependencies).GetResult();
+        var result = Types.InAssembly(assembly).ShouldNot().HaveDependencyOnAny(otherProjects).GetResult();
 
         // Assert
         Assert.True(result.IsSuccessful);
     }
 
-    
+    [Fact]
+    public void Domain_Should_DependSolelyOnContracts()
+    {
+        // Arrange
+        var assembly = typeof(MaintenanceAggregatingService).Assembly;
+
+        var otherProjects = new[]
+{
+            EntityFrameworkNamespace,
+            WebserviceNamespace
+        };
+
+        // Act
+        var dependencyOnContractsResult = Types.InAssembly(assembly).Should().HaveDependencyOn(ContractsNamespace).GetResult();
+        var dependencyOnOtherProjectsResult = Types.InAssembly(assembly).ShouldNot().HaveDependencyOnAny(otherProjects).GetResult();
+
+        // Assert
+        Assert.True(dependencyOnContractsResult.IsSuccessful);
+        Assert.True(dependencyOnOtherProjectsResult.IsSuccessful);
+    }
 }

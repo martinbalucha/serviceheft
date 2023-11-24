@@ -1,8 +1,8 @@
-﻿using ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
+﻿using ServiceHeft.Maintenance.Contracts.Maintenance;
 
 namespace ServiceHeft.Maintenance.Domain;
 
-public class ServiceAggregatingService : IMaintenanceAggregateService
+public class MaintenanceAggregatingService : IMaintenanceAggregateService
 {
     public Task GetCarServiceAggregate(Guid carId)
     {
