@@ -1,18 +1,19 @@
-﻿using ServiceHeft.Maintenance.Contracts.Servicing.Common;
+﻿using ServiceHeft.Maintenance.Contracts.Common;
+using ServiceHeft.Maintenance.Contracts.Common.Monetary;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
+namespace ServiceHeft.Maintenance.Contracts.Maintenance;
 
 public class ServiceRecord : Entity
 {
-    private readonly List<Autopart> _partsChanged = new ();
+    private readonly List<Autopart> _partsChanged = new();
 
     public Guid CarId { get; private set; }
 
     public DateTime PerformedOn { get; private set; }
-    
+
     public string Name { get; private set; }
-    
+
     public string Description { get; private set; }
 
     [NotMapped]

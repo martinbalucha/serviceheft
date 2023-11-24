@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
+using ServiceHeft.Maintenance.Contracts.Maintenance;
 
 namespace ServiceHeft.Persistence.EntityFramework.Configurations;
 

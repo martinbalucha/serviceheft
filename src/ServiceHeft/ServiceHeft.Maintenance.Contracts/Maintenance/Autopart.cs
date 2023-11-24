@@ -1,7 +1,8 @@
-﻿using ServiceHeft.Maintenance.Contracts.Servicing.Common;
+﻿using ServiceHeft.Maintenance.Contracts.Common;
+using ServiceHeft.Maintenance.Contracts.Common.Monetary;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
+namespace ServiceHeft.Maintenance.Contracts.Maintenance;
 
 public class Autopart : Entity
 {
