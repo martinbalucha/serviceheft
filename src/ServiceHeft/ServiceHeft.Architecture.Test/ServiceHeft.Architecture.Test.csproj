@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ServiceHeft.Persistence.EntityFramework\ServiceHeft.Persistence.EntityFramework.csproj" />
+    <ProjectReference Include="..\ServiceHeft.Persistence.EntityFramework\ServiceHeft.Persistence.EntityFramework.csproj" />
     <ProjectReference Include="..\ServiceHeft.Maintenance.Contracts\ServiceHeft.Maintenance.Contracts.csproj" />
     <ProjectReference Include="..\ServiceHeft.Maintenance.Domain\ServiceHeft.Maintenance.Domain.csproj" />
   </ItemGroup>
