@@ -1,4 +1,4 @@
-﻿namespace ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
+﻿namespace ServiceHeft.Maintenance.Contracts.Maintenance;
 
 /// <summary>
 /// Provides aggregation of maintenance performed on <see cref="Car"/>

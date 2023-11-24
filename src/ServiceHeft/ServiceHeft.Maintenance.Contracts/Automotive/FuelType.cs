@@ -1,4 +1,4 @@
-﻿namespace ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
+﻿namespace ServiceHeft.Maintenance.Contracts.Automotive;
 
 public enum FuelType
 {

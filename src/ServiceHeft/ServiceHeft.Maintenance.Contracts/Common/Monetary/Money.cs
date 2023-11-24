@@ -1,4 +1,4 @@
-﻿namespace ServiceHeft.Maintenance.Contracts.Servicing.Common;
+﻿namespace ServiceHeft.Maintenance.Contracts.Common.Monetary;
 
 public record Money : IMoney, IComparable<Money>
 {

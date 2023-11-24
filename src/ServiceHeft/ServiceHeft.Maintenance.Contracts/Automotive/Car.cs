@@ -1,6 +1,7 @@
-﻿using ServiceHeft.Maintenance.Contracts.Servicing.Maintenance;
+﻿using ServiceHeft.Maintenance.Contracts.Common;
+using ServiceHeft.Maintenance.Contracts.Maintenance;
 
-namespace ServiceHeft.Maintenance.Contracts.Servicing.Automotive;
+namespace ServiceHeft.Maintenance.Contracts.Automotive;
 
 public class Car : Entity
 {
@@ -21,7 +22,7 @@ public class Car : Entity
     {
     }
 
-    public Car(Guid id, string vin, ModelInfo modelInfo, 
+    public Car(Guid id, string vin, ModelInfo modelInfo,
         DateTime producedOn, string licencePlate,
         int distanceDrivenInKilometers, Engine engine) : base(id)
     {
