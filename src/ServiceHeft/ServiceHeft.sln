@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D02769C6-D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHeft.Maintenance.Domain.Test", "ServiceHeft.Maintenance.Domain.Test\ServiceHeft.Maintenance.Domain.Test.csproj", "{F27280ED-6071-428D-BD86-01845F84B449}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHeft.Architecture.Test", "ServiceHeft.Architecture.Test\ServiceHeft.Architecture.Test.csproj", "{27C3C2D1-81A9-45E2-9B0E-82696766A14D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,12 +49,17 @@ Global
 		{F27280ED-6071-428D-BD86-01845F84B449}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F27280ED-6071-428D-BD86-01845F84B449}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F27280ED-6071-428D-BD86-01845F84B449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27C3C2D1-81A9-45E2-9B0E-82696766A14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27C3C2D1-81A9-45E2-9B0E-82696766A14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27C3C2D1-81A9-45E2-9B0E-82696766A14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27C3C2D1-81A9-45E2-9B0E-82696766A14D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F27280ED-6071-428D-BD86-01845F84B449} = {D02769C6-D362-4A4A-B199-B5605613A963}
+		{27C3C2D1-81A9-45E2-9B0E-82696766A14D} = {D02769C6-D362-4A4A-B199-B5605613A963}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {550EDA95-9B49-48A5-BBE9-53BC585152CE}
