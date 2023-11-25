@@ -1,0 +1,29 @@
+name: Solution Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0
+          
+      - name: Restore Dependencies
+        uses: dotnet restore ./ServiceHeft.sln
+
+      - name: Release Build
+        uses: dotne build ./ServiceHeft.sln --configuration Release --no-restore
+
+      - name: Run Tests
+        uses: dotnet test ./ServiceHeft.sln --configuration Release --no-restore --no-build
