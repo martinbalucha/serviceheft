@@ -3,7 +3,7 @@ name: Solution Build
 on:
   workflow_dispatch:
   push:
-    branches: [ main, 2-create-ci-pipeline ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
