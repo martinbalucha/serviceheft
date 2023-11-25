@@ -14,3 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0
+          
