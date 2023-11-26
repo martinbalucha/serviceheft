@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using ServiceHeft.Persistence.EntityFramework.DataAccess;
 using ServiceHeft.Server.Application.Configuration;
 using ServiceHeft.Webservice.CarMaintenance;
@@ -6,6 +7,7 @@ using ServiceHeft.Webservice.CarMaintenance;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("SqlServerConfiguration.json");
+builder.Configuration.AddJsonFile("loggerSettings.json");
 
 // Add services to the container.
 
@@ -29,9 +31,17 @@ builder.Services.AddDbContext<ServiceHeftDbContext>(dbContextBulder =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Logging
+builder.Host.UseSerilog((ctx, config) =>
+{
+    config.ReadFrom.Configuration(ctx.Configuration);
+});
+
 builder.WebHost.UseKestrel(o => o.AllowAlternateSchemes = true);
 
 var app = builder.Build();
+
+app.UseSerilogRequestLogging();
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
