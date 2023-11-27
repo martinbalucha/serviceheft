@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ServiceHeft.Maintenance.Contracts.Common;
+using ServiceHeft.Maintenance.Contracts.Common.ErrorHandling;
 
 namespace ServiceHeft.Persistence.EntityFramework;
 
@@ -9,27 +10,35 @@ public class EntityFrameworkRepository<TEntity> : IRepository<TEntity> where TEn
 
     public EntityFrameworkRepository(DbContext dbContext)
     {
-        this._dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
     }
 
-    public Task<Guid> CreateAsync(TEntity entity)
+    public async Task CreateAsync(TEntity entity)
     {
-        throw new NotImplementedException();
+        await _dbContext.AddAsync(entity);
     }
 
-    public Task DeleteAsync(Guid id)
+    public async Task DeleteAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var entity = await _dbContext.FindAsync<TEntity>(id);
+
+        if (entity is null)
+        {
+            throw new NotFoundException($"The object of type '{typeof(TEntity).Name}' with ID '{id}' does not exist.");
+        }
+
+        _dbContext.Remove(entity);
     }
 
-    public Task<TEntity?> FindAsync(Guid id)
+    public async Task<TEntity?> FindAsync(Guid id)
     {
-        throw new NotImplementedException();
+        return await _dbContext.FindAsync<TEntity>(id);
     }
 
     public Task<IEnumerable<TEntity>> ListAsync()
     {
-        throw new NotImplementedException();
+        var entities = _dbContext.Set<TEntity>().AsEnumerable();
+        return Task.FromResult(entities);
     }
 
     public Task UpdateAsync(TEntity entity)
