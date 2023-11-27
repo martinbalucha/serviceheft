@@ -41,8 +41,15 @@ public class EntityFrameworkRepository<TEntity> : IRepository<TEntity> where TEn
         return Task.FromResult(entities);
     }
 
-    public Task UpdateAsync(TEntity entity)
+    public async Task UpdateAsync(TEntity entity)
     {
-        throw new NotImplementedException();
+        var storedEntity = await _dbContext.FindAsync<TEntity>(entity.Id);
+
+        if (storedEntity is null)
+        {
+            throw new NotFoundException($"The object of type '{typeof(TEntity).Name}' with ID '{entity.Id}' does not exist.");
+        }
+
+        _dbContext.Entry(storedEntity).CurrentValues.SetValues(entity);
     }
 }
