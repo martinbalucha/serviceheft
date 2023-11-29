@@ -43,4 +43,19 @@ public class EntityFrameworkRepositoryTest
         // Assert
         result.Should().BeNull();
     }
+
+    [Fact]
+    public async Task CreateAsync_ValidCar_CarCreated()
+    {
+        // Arrange
+        var modelInfo = new ModelInfo("Citroen", "C5");
+        var engine = new Engine("RHR", FuelType.Diesel, 1997, 120);
+        var car = new Car(Guid.NewGuid(), "VF701234567891234", modelInfo, DateTime.Now, "2AB0373", 193000, engine);
+
+        // Act
+        await _repository.CreateAsync(car);
+
+        // Assert
+        _dbContext.Verify(c => c.AddAsync(car, default), Times.Once);
+    }
 }
