@@ -4,10 +4,7 @@ using Moq;
 using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Common.ErrorHandling;
 using ServiceHeft.Persistence.EntityFramework;
-using System.Net.Sockets;
-using System.Reflection.Metadata;
 using Xunit;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ServiceHeft.Maintenance.Infrastructure.Test.Persistence;
 
