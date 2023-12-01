@@ -38,6 +38,7 @@ public class EntityFrameworkRepository<TEntity> : IRepository<TEntity> where TEn
     public Task<IEnumerable<TEntity>> ListAsync()
     {
         var entities = _dbContext.Set<TEntity>().AsEnumerable();
+        
         return Task.FromResult(entities);
     }
 
