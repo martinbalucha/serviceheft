@@ -1,7 +1,9 @@
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Moq;
 using ServiceHeft.Maintenance.Contracts.Automotive;
+using ServiceHeft.Maintenance.Contracts.Common.ErrorHandling;
 using ServiceHeft.Persistence.EntityFramework;
 using Xunit;
 
@@ -57,5 +59,38 @@ public class EntityFrameworkRepositoryTest
 
         // Assert
         _dbContext.Verify(c => c.AddAsync(car, default), Times.Once);
+    }
+
+    [Fact]
+    public async Task UpdateAsync_NonexistentCar_ExceptionThrown()
+    {
+        // Arrange
+        var modelInfo = new ModelInfo("Citroen", "C5");
+        var engine = new Engine("RHR", FuelType.Diesel, 1997, 120);
+        var car = new Car(Guid.NewGuid(), "VF701234567891234", modelInfo, DateTime.Now, "2AB0373", 193000, engine);
+
+        // Act & Assert
+        await Assert.ThrowsAsync<NotFoundException>(() => _repository.UpdateAsync(car));
+        _dbContext.Verify(c => c.Update(It.IsAny<Car>), Times.Never);
+    }
+
+    [Fact]
+    public async Task UpdateAsync_ExistingCar_CarUpdated()
+    {
+        // Arrange
+        var modelInfo = new ModelInfo("Citroen", "C5");
+        var engine = new Engine("RHR", FuelType.Diesel, 1997, 120);
+        var storedCar = new Car(Guid.NewGuid(), "VF701234567891234", modelInfo, DateTime.Now, "2AB0373", 193000, engine);        
+
+        var updatedCar = new Car(storedCar.Id, storedCar.Vin, modelInfo, storedCar.ProducedOn, "2BM8421", 220000, engine);
+
+        _dbContext.Setup(c => c.FindAsync<Car>(storedCar.Id)).ReturnsAsync(storedCar);
+
+        // Act
+        await _repository.UpdateAsync(updatedCar);
+
+        // 
+        _dbContext.Verify(c => c.FindAsync<Car>(storedCar.Id), Times.Once);
+        _dbContext.Verify(c => c.Update(updatedCar), Times.Once);
     }
 }

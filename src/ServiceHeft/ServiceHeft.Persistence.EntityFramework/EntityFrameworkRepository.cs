@@ -50,6 +50,6 @@ public class EntityFrameworkRepository<TEntity> : IRepository<TEntity> where TEn
             throw new NotFoundException($"The object of type '{typeof(TEntity).Name}' with ID '{entity.Id}' does not exist.");
         }
 
-        _dbContext.Entry(storedEntity).CurrentValues.SetValues(entity);
+        _dbContext.Update(entity);
     }
 }

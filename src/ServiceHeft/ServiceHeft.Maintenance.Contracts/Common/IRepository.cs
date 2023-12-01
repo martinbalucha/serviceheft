@@ -7,6 +7,11 @@
 public interface IRepository<TEntity> where TEntity : Entity
 {
     Task CreateAsync(TEntity entity);
+
+    /// <summary></summary>
+    /// <param name="entity"></param>
+    /// <exception cref="NotFoundException">When the updated entity does not exist in the data storage.</exception>
+    /// <returns></returns>
     Task UpdateAsync(TEntity entity);
     Task DeleteAsync(Guid id);
     Task<TEntity?> FindAsync(Guid id);
