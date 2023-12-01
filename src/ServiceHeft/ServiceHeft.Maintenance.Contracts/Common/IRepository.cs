@@ -6,7 +6,12 @@
 /// <typeparam name="TEntity">A domain entity the repository will work with.</typeparam>
 public interface IRepository<TEntity> where TEntity : Entity
 {
-    Task<Guid> CreateAsync(TEntity entity);
+    Task CreateAsync(TEntity entity);
+
+    /// <summary></summary>
+    /// <param name="entity"></param>
+    /// <exception cref="NotFoundException">When the updated entity does not exist in the data storage.</exception>
+    /// <returns></returns>
     Task UpdateAsync(TEntity entity);
     Task DeleteAsync(Guid id);
     Task<TEntity?> FindAsync(Guid id);
