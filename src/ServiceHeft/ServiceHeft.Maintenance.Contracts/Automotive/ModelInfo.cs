@@ -1,3 +1,3 @@
 ﻿namespace ServiceHeft.Maintenance.Contracts.Automotive;
 
-public record ModelInfo(string Brand, string ModelName);
+public record ModelInfo(string Manufacturer, string ModelName);
