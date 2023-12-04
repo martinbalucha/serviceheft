@@ -4,11 +4,6 @@ using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Automotive.Dtos;
 using ServiceHeft.Maintenance.Contracts.Common;
 using ServiceHeft.Maintenance.Domain.Automotive;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace ServiceHeft.Maintenance.Domain.Test;
@@ -48,5 +43,18 @@ public class CarServiceTest
                                                         && c.LicencePlate == request.LicencePlate 
                                                         && c.ModelInfo == request.ModelInfo 
                                                         && c.Engine == request.Engine)));
+    }
+
+    [Fact]
+    public async Task DeleteCar_ExistingCar_CarDeleted()
+    {
+        // Arrange
+        var carId = Guid.NewGuid();
+
+        // Act
+        await _carService.DeleteAsync(carId);
+
+        // Assert
+        _repository.Verify(r => r.DeleteAsync(carId));
     }
 }
