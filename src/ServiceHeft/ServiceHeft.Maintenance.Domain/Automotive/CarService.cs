@@ -2,6 +2,7 @@
 using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Automotive.Dtos;
 using ServiceHeft.Maintenance.Contracts.Common;
+using ServiceHeft.Maintenance.Contracts.Common.ErrorHandling;
 
 namespace ServiceHeft.Maintenance.Domain.Automotive;
 
@@ -42,13 +43,26 @@ public class CarService : ICarService
         _logger.Information("A car with ID '{Id}' was deleted", carId);
     }
 
-    public Task<Car> FindAsync(Guid carId)
+    public async Task<Car?> FindAsync(Guid carId)
     {
-        throw new NotImplementedException();
+        return await _repository.FindAsync(carId);
     }
 
-    public Task UpdateAsync(Car car)
+    public async Task UpdateAsync(UpdateCarRequest request)
     {
-        throw new NotImplementedException();
+        // TODO: do validation
+
+        var storedCar = await _repository.FindAsync(request.CarId);
+
+        if (storedCar == null)
+        {
+            throw new NotFoundException($"The car with ID '{request.CarId}' does not exist.");
+        }
+
+        storedCar.UpdateInformation(request.Engine, request.LicencePlate, request.DistanceDrivenInKilometers);
+
+        await _repository.UpdateAsync(storedCar);
+
+        _logger.Information("Updated car: {CarId}", storedCar.Id);
     }
 }
