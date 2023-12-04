@@ -1,21 +1,19 @@
-﻿using ServiceHeft.Maintenance.Contracts.Automotive;
+﻿using Serilog;
+using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Automotive.Dtos;
 using ServiceHeft.Maintenance.Contracts.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceHeft.Maintenance.Domain.Automotive;
 
 public class CarService : ICarService
 {
     private readonly IRepository<Car> _repository;
+    private readonly ILogger _logger;
 
-    public CarService(IRepository<Car> repository)
+    public CarService(IRepository<Car> repository, ILogger logger)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
     public async Task<CreateCarResponse> CreateAsync(CreateCarRequest request)
@@ -26,6 +24,8 @@ public class CarService : ICarService
                             request.LicencePlate, request.DistanceDrivenInKilometers, request.Engine);
 
         await _repository.CreateAsync(car);
+
+        _logger.Information("A car with ID '{Id}' successfully created.", car.Id);
 
         return new CreateCarResponse(car.Id);
     }
