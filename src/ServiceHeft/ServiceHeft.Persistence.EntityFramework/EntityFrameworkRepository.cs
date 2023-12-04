@@ -1,14 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ServiceHeft.Maintenance.Contracts.Common;
+﻿using ServiceHeft.Maintenance.Contracts.Common;
 using ServiceHeft.Maintenance.Contracts.Common.ErrorHandling;
+using ServiceHeft.Persistence.EntityFramework.DataAccess;
 
 namespace ServiceHeft.Persistence.EntityFramework;
 
 public class EntityFrameworkRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
 {
-    private readonly DbContext _dbContext;
+    private readonly ServiceHeftDbContext _dbContext;
 
-    public EntityFrameworkRepository(DbContext dbContext)
+    public EntityFrameworkRepository(ServiceHeftDbContext dbContext)
     {
         _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
     }

@@ -4,13 +4,14 @@ using Moq;
 using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Common.ErrorHandling;
 using ServiceHeft.Persistence.EntityFramework;
+using ServiceHeft.Persistence.EntityFramework.DataAccess;
 using Xunit;
 
 namespace ServiceHeft.Maintenance.Infrastructure.Test.Persistence;
 
 public class EntityFrameworkRepositoryTest
 {
-    private readonly Mock<DbContext> _dbContext = new Mock<DbContext>();
+    private readonly Mock<ServiceHeftDbContext> _dbContext = new Mock<ServiceHeftDbContext>();
     private readonly EntityFrameworkRepository<Car> _repository;
 
     public EntityFrameworkRepositoryTest()
