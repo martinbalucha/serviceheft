@@ -43,9 +43,26 @@ public class CarService : ICarService
         _logger.Information("A car with ID '{Id}' was deleted", request.CarId);
     }
 
-    public async Task<Car?> GetByIdAsync(GetCarByIdRequest request)
+    public async Task<GetCarByIdResponse?> GetByIdAsync(GetCarByIdRequest request)
     {
-        return await _repository.FindAsync(request.CarId);
+        // TODO: implement null pattern instead of returning null
+        var car = await _repository.FindAsync(request.CarId);
+
+        if (car == null)
+        {
+            return default;
+        };
+
+        return new GetCarByIdResponse
+        {
+            Id = car.Id,
+            Engine = car.Engine,
+            ModelInfo = car.ModelInfo,
+            Vin = car.Vin,
+            DistanceDrivenInKilometers = car.DistanceDrivenInKilometers,
+            LicencePlate = car.LicencePlate,
+            ProducedOn = car.ProducedOn
+        };
     }
 
     public async Task UpdateAsync(UpdateCarRequest request)

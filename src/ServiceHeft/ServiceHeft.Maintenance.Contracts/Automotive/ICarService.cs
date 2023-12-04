@@ -8,5 +8,5 @@ public interface ICarService
     Task UpdateAsync(UpdateCarRequest request);
     Task DecommissionAsnyc(Guid carId);
     Task DeleteAsync(DeleteCarRequest request);
-    Task<Car?> GetByIdAsync(GetCarByIdRequest request);
+    Task<GetCarByIdResponse?> GetByIdAsync(GetCarByIdRequest request);
 }
