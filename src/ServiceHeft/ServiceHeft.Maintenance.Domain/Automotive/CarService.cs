@@ -1,4 +1,5 @@
 ﻿using ServiceHeft.Maintenance.Contracts.Automotive;
+using ServiceHeft.Maintenance.Contracts.Automotive.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace ServiceHeft.Maintenance.Domain.Automotive;
 
 public class CarService : ICarService
 {
-    public Task CreateAsync(Car car)
+    public Task<CreateCarResponse> CreateAsync(CreateCarRequest request)
     {
         throw new NotImplementedException();
     }
