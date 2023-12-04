@@ -52,7 +52,7 @@ public class CarServiceTest
         var carId = Guid.NewGuid();
 
         // Act
-        await _carService.DeleteAsync(carId);
+        await _carService.DeleteAsync(new DeleteCarRequest(carId));
 
         // Assert
         _repository.Verify(r => r.DeleteAsync(carId));

@@ -1,5 +1,6 @@
-﻿using ServiceHeft.Webservice.CarMaintenance.Requests;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using ServiceHeft.Maintenance.Contracts.Automotive;
+using ServiceHeft.Maintenance.Contracts.Automotive.Dtos;
 
 namespace ServiceHeft.Webservice.CarMaintenance;
 
@@ -7,17 +8,28 @@ namespace ServiceHeft.Webservice.CarMaintenance;
 [Route("api/[controller]")]
 public class CarController : ControllerBase
 {
+    private readonly ICarService _carService;
+
+    public CarController(ICarService carService)
+    {
+        _carService = carService ?? throw new ArgumentNullException(nameof(_carService)); 
+    }
+
 
     [HttpPost]
-    public Task<IActionResult> CreateCar(CreateCarRequest request)
+    public async Task<IActionResult> CreateCar(CreateCarRequest request)
     {
-        throw new NotImplementedException();
+        var result = await _carService.CreateAsync(request);
+        
+        return Ok(result);
     }
 
     [HttpDelete]
-    public Task<IActionResult> DeleteCar()
+    public async Task<IActionResult> DeleteCar(DeleteCarRequest request)
     {
-        throw new NotImplementedException();
+        await _carService.DeleteAsync(request);
+
+        return Ok();
     }
 
     [HttpPut]
@@ -27,7 +39,7 @@ public class CarController : ControllerBase
     }
 
     [HttpGet]
-    public Task<IActionResult> GetCar(GetCarRequest request)
+    public Task<IActionResult> GetCar(Guid carId)
     {
         throw new NotImplementedException();
     }

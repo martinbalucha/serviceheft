@@ -36,16 +36,16 @@ public class CarService : ICarService
         throw new NotImplementedException();
     }
 
-    public async Task DeleteAsync(Guid carId)
+    public async Task DeleteAsync(DeleteCarRequest request)
     {
-        await _repository.DeleteAsync(carId);
+        await _repository.DeleteAsync(request.CarId);
 
-        _logger.Information("A car with ID '{Id}' was deleted", carId);
+        _logger.Information("A car with ID '{Id}' was deleted", request.CarId);
     }
 
-    public async Task<Car?> FindAsync(Guid carId)
+    public async Task<Car?> GetByIdAsync(GetCarByIdRequest request)
     {
-        return await _repository.FindAsync(carId);
+        return await _repository.FindAsync(request.CarId);
     }
 
     public async Task UpdateAsync(UpdateCarRequest request)
