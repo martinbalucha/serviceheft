@@ -30,17 +30,19 @@ public class CarService : ICarService
         return new CreateCarResponse(car.Id);
     }
 
-    public Task DecommissionAsnyc(Guid car)
+    public Task DecommissionAsnyc(Guid carId)
     {
         throw new NotImplementedException();
     }
 
-    public Task DeleteAsync(Car car)
+    public async Task DeleteAsync(Guid carId)
     {
-        throw new NotImplementedException();
+        await _repository.DeleteAsync(carId);
+
+        _logger.Information("A car with ID '{Id}' was deleted", carId);
     }
 
-    public Task<Car> FindAsync(Guid guid)
+    public Task<Car> FindAsync(Guid carId)
     {
         throw new NotImplementedException();
     }
