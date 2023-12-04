@@ -20,7 +20,7 @@ public class CarServiceTest
     }
 
     [Fact]
-    public async Task CreateCar_ValidRequest_CarCreated()
+    public async Task CreateAsync_ValidRequest_CarCreated()
     {
         // Arrange
         var request = new CreateCarRequest
@@ -46,7 +46,7 @@ public class CarServiceTest
     }
 
     [Fact]
-    public async Task DeleteCar_ExistingCar_CarDeleted()
+    public async Task DeleteAsync_ExistingCar_CarDeleted()
     {
         // Arrange
         var carId = Guid.NewGuid();
