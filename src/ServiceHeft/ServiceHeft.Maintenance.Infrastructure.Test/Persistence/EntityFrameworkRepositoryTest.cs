@@ -11,7 +11,11 @@ namespace ServiceHeft.Maintenance.Infrastructure.Test.Persistence;
 
 public class EntityFrameworkRepositoryTest
 {
-    private readonly Mock<ServiceHeftDbContext> _dbContext = new Mock<ServiceHeftDbContext>();
+    private readonly Mock<ServiceHeftDbContext> _dbContext = new(MockBehavior.Loose, new object[]
+    {
+        new DbContextOptions<ServiceHeftDbContext>()
+    });
+
     private readonly EntityFrameworkRepository<Car> _repository;
 
     public EntityFrameworkRepositoryTest()
