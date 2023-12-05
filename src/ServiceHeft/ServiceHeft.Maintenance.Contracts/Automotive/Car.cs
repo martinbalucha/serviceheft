@@ -33,4 +33,13 @@ public class Car : Entity
         DistanceDrivenInKilometers = distanceDrivenInKilometers;
         Engine = engine;
     }
+
+    public void UpdateInformation(Engine engine, string licencePlate, int distanceDriven)
+    {
+        ArgumentNullException.ThrowIfNull(nameof(engine));
+
+        Engine = engine;
+        LicencePlate = licencePlate.Trim().ToUpper();
+        DistanceDrivenInKilometers = distanceDriven;
+    }
 }
