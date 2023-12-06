@@ -19,6 +19,7 @@ public class CarEntityTypeConfiguration : IEntityTypeConfiguration<Car>
     public void Configure(EntityTypeBuilder<Car> builder)
     {
         builder.HasKey(c => c.Id);
+        builder.HasAlternateKey(c => c.Vin);
         builder.Property(c => c.Vin).HasMaxLength(VinMaximumLength);
         builder.Property(c => c.LicencePlate).HasMaxLength(LicencePlateMaxLength);
 

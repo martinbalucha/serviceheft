@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ServiceHeft.Persistence.EntityFramework.DataAccess;
 
@@ -11,9 +12,11 @@ using ServiceHeft.Persistence.EntityFramework.DataAccess;
 namespace ServiceHeft.Persistence.EntityFramework.Migrations
 {
     [DbContext(typeof(ServiceHeftDbContext))]
-    partial class ServiceHeftDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231206185248_AddVinUniqueConstraint")]
+    partial class AddVinUniqueConstraint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
