@@ -30,7 +30,7 @@ builder.Services.AddDbContext<ServiceHeftDbContext>(dbContextBulder =>
         sqlServerAction.EnableRetryOnFailure(sqlServerConfiguration.RetryOnFailureCount);
         sqlServerAction.CommandTimeout(sqlServerConfiguration.CommandTimeoutInSeconds);
     });
-});
+}, ServiceLifetime.Singleton);
 
 // Automotive
 builder.Services.AddSingleton<ICarService, CarService>();
