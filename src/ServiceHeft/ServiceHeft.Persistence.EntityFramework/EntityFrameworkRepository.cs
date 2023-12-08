@@ -1,5 +1,6 @@
 ﻿using ServiceHeft.Maintenance.Contracts.Common;
 using ServiceHeft.Maintenance.Contracts.Common.ErrorHandling;
+using ServiceHeft.Maintenance.Contracts.Common.Persistence;
 using ServiceHeft.Persistence.EntityFramework.DataAccess;
 
 namespace ServiceHeft.Persistence.EntityFramework;

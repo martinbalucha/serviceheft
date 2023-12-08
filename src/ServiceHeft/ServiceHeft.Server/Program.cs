@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Serilog;
 using ServiceHeft.Maintenance.Contracts.Automotive;
-using ServiceHeft.Maintenance.Contracts.Common;
+using ServiceHeft.Maintenance.Contracts.Common.Persistence;
 using ServiceHeft.Maintenance.Domain.Automotive;
 using ServiceHeft.Persistence.EntityFramework;
 using ServiceHeft.Persistence.EntityFramework.DataAccess;
@@ -37,6 +37,7 @@ builder.Services.AddSingleton<ICarService, CarService>();
 
 // Persistence
 builder.Services.AddSingleton<IRepository<Car>, EntityFrameworkRepository<Car>>();
+builder.Services.AddSingleton<IUnitOfWork, EntityFrameworkUnitOfWork>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

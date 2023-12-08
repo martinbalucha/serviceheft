@@ -1,19 +1,23 @@
 ﻿using Serilog;
 using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Automotive.Dtos;
-using ServiceHeft.Maintenance.Contracts.Common;
 using ServiceHeft.Maintenance.Contracts.Common.ErrorHandling;
+using ServiceHeft.Maintenance.Contracts.Common.Persistence;
 
 namespace ServiceHeft.Maintenance.Domain.Automotive;
 
 public class CarService : ICarService
 {
     private readonly IRepository<Car> _repository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly ILogger _logger;
 
-    public CarService(IRepository<Car> repository, ILogger logger)
+    public CarService(IRepository<Car> repository,
+        IUnitOfWork unitOfWork,
+        ILogger logger)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
@@ -25,6 +29,7 @@ public class CarService : ICarService
                             request.LicencePlate, request.DistanceDrivenInKilometers, request.Engine);
 
         await _repository.CreateAsync(car);
+        await _unitOfWork.SaveAsync();
 
         _logger.Information("A car with ID '{Id}' successfully created.", car.Id);
 
@@ -39,6 +44,7 @@ public class CarService : ICarService
     public async Task DeleteAsync(DeleteCarRequest request)
     {
         await _repository.DeleteAsync(request.CarId);
+        await _unitOfWork.SaveAsync();
 
         _logger.Information("A car with ID '{Id}' was deleted", request.CarId);
     }
@@ -79,6 +85,7 @@ public class CarService : ICarService
         storedCar.UpdateInformation(request.Engine, request.LicencePlate, request.DistanceDrivenInKilometers);
 
         await _repository.UpdateAsync(storedCar);
+        await _unitOfWork.SaveAsync();
 
         _logger.Information("Updated car: {CarId}", storedCar.Id);
     }

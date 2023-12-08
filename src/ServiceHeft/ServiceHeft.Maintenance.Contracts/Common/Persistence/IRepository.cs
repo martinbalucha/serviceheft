@@ -1,4 +1,4 @@
-﻿namespace ServiceHeft.Maintenance.Contracts.Common;
+﻿namespace ServiceHeft.Maintenance.Contracts.Common.Persistence;
 
 /// <summary>
 /// Provides CRUD operations on a specified <typeparamref name="TEntity"/>
