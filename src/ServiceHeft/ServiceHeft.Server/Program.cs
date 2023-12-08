@@ -37,6 +37,7 @@ builder.Services.AddSingleton<ICarService, CarService>();
 
 // Persistence
 builder.Services.AddSingleton<IRepository<Car>, EntityFrameworkRepository<Car>>();
+builder.Services.AddSingleton<IUnitOfWork, EntityFrameworkUnitOfWork>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
