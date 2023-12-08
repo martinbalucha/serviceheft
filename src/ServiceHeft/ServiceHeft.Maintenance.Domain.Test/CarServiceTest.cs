@@ -11,12 +11,13 @@ namespace ServiceHeft.Maintenance.Domain.Test;
 public class CarServiceTest
 {
     private readonly Mock<IRepository<Car>> _repository = new();
+    private readonly Mock<IUnitOfWork> _unitOfWork = new Mock<IUnitOfWork>();
     private readonly CarService _carService;
 
     public CarServiceTest()
     {
         var logger = new Mock<ILogger>();
-        _carService = new CarService(_repository.Object, logger.Object);
+        _carService = new CarService(_repository.Object, _unitOfWork.Object, logger.Object);
     }
 
     [Fact]
