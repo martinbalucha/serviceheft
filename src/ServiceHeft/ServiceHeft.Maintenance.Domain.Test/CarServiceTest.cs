@@ -42,7 +42,7 @@ public class CarServiceTest
         _repository.Verify(r => r.CreateAsync(It.Is<Car>(c => c.Id == result.CarId
                                                         && c.DistanceDrivenInKilometers == request.DistanceDrivenInKilometers
                                                         && c.LicencePlate == request.LicencePlate 
-                                                        && c.ModelInfo == request.ModelInfo 
+                                                        && c.Model == request.ModelInfo 
                                                         && c.Engine == request.Engine)));
     }
 

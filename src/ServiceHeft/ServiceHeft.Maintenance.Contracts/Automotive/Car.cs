@@ -11,7 +11,7 @@ public class Car : Entity
     /// Vehicle Identification Number
     /// </summary>
     public string Vin { get; private set; }
-    public Model ModelInfo { get; private set; }
+    public Model Model { get; private set; }
     public DateTime ProducedOn { get; init; }
     public string LicencePlate { get; set; }
     public int DistanceDrivenInKilometers { get; set; }
@@ -27,7 +27,7 @@ public class Car : Entity
         int distanceDrivenInKilometers, Engine engine) : base(id)
     {
         Vin = vin;
-        ModelInfo = modelInfo;
+        Model = modelInfo;
         ProducedOn = producedOn;
         LicencePlate = licencePlate;
         DistanceDrivenInKilometers = distanceDrivenInKilometers;
