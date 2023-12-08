@@ -1,8 +1,8 @@
 ﻿using Serilog;
 using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Automotive.Dtos;
-using ServiceHeft.Maintenance.Contracts.Common;
 using ServiceHeft.Maintenance.Contracts.Common.ErrorHandling;
+using ServiceHeft.Maintenance.Contracts.Common.Persistence;
 
 namespace ServiceHeft.Maintenance.Domain.Automotive;
 

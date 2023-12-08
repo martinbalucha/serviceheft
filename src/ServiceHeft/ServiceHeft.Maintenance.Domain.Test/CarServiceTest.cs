@@ -2,7 +2,7 @@
 using Serilog;
 using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Automotive.Dtos;
-using ServiceHeft.Maintenance.Contracts.Common;
+using ServiceHeft.Maintenance.Contracts.Common.Persistence;
 using ServiceHeft.Maintenance.Domain.Automotive;
 using Xunit;
 
