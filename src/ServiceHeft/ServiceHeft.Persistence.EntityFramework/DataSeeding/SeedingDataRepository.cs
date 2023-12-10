@@ -22,16 +22,18 @@ public class SeedingDataRepository<T> : ISeedingDataRepository<T> where T : clas
     {
         string jsonString = _file.ReadAllText(_dataSeedingConfiguration.SeedingFilePath);
 
-        var data = JsonSerializer.Deserialize<List<T>>(jsonString)
-            ?? throw new SerializationException("An error occurred during the file deserialization.");
-
-        return data;
+        return ReadCore(jsonString);
     }
 
     public async Task<IEnumerable<T>> ReadAsync()
     {
         string jsonString = await _file.ReadAllTextAsync(_dataSeedingConfiguration.SeedingFilePath);
 
+        return ReadCore(jsonString);
+    }
+
+    private static IEnumerable<T> ReadCore(string jsonString)
+    {
         var data = JsonSerializer.Deserialize<List<T>>(jsonString)
             ?? throw new SerializationException("An error occurred during the file deserialization.");
 
