@@ -23,12 +23,6 @@ public class CarEntityTypeConfiguration : IEntityTypeConfiguration<Car>
         builder.Property(c => c.Vin).HasMaxLength(VinMaximumLength);
         builder.Property(c => c.LicencePlate).HasMaxLength(LicencePlateMaxLength);
 
-        builder.OwnsOne(c => c.Model, mi =>
-        {
-            mi.Property<Guid>("CarId");
-            mi.WithOwner();
-        });
-
         builder.OwnsOne(c => c.Engine, e =>
         {
             e.Property<Guid>("CarId");

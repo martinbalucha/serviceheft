@@ -2,15 +2,15 @@
 
 public record Model
 {
-    public Manufacturer Manufacturer { get; private set; }
-    public string OfficialName { get; private set; }
+    public string Manufacturer { get; private set; } = string.Empty;
+    public string OfficialName { get; private set; } = string.Empty;
     public string? InternalName { get; private set; }
 
     private Model()
     {
     }
 
-    public Model(Manufacturer manufacturer, string officialName, string? internalName = null)
+    public Model(string manufacturer, string officialName, string? internalName = null)
     {
         Manufacturer = manufacturer;
         OfficialName = officialName;

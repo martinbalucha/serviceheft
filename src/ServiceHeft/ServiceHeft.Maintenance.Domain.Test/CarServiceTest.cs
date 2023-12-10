@@ -26,7 +26,7 @@ public class CarServiceTest
         // Arrange
         var request = new CreateCarRequest
         {
-            ModelInfo = new Model(new Manufacturer("Citroen"), "C5", "X7"),
+            ModelInfo = new Model("Citroen", "C5", "X7"),
             DistanceDrivenInKilometers = 193000,
             Engine = new Engine("RWR", FuelType.Diesel, 1997, 120),
             LicencePlate = "2AB0373",
