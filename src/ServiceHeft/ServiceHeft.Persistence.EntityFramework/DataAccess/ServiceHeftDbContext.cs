@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Maintenance;
-using ServiceHeft.Persistence.EntityFramework.Configurations;
+using ServiceHeft.Persistence.EntityFramework.EntityConfigurations;
 
 namespace ServiceHeft.Persistence.EntityFramework.DataAccess;
 
