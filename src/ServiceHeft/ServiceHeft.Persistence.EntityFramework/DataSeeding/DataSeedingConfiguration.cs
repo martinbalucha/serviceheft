@@ -1,4 +1,4 @@
-﻿namespace ServiceHeft.Persistence.EntityFramework.Configuration;
+﻿namespace ServiceHeft.Persistence.EntityFramework.DataSeeding;
 
 public record DataSeedingConfiguration
 {
