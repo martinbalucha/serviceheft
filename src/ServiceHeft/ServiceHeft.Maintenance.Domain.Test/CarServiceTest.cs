@@ -26,7 +26,7 @@ public class CarServiceTest
         // Arrange
         var request = new CreateCarRequest
         {
-            ModelInfo = new ModelInfo("Citroen", "C5"),
+            ModelInfo = new Model("Citroen", "C5", "X7"),
             DistanceDrivenInKilometers = 193000,
             Engine = new Engine("RWR", FuelType.Diesel, 1997, 120),
             LicencePlate = "2AB0373",
@@ -42,7 +42,7 @@ public class CarServiceTest
         _repository.Verify(r => r.CreateAsync(It.Is<Car>(c => c.Id == result.CarId
                                                         && c.DistanceDrivenInKilometers == request.DistanceDrivenInKilometers
                                                         && c.LicencePlate == request.LicencePlate 
-                                                        && c.ModelInfo == request.ModelInfo 
+                                                        && c.Model == request.ModelInfo 
                                                         && c.Engine == request.Engine)));
     }
 

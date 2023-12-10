@@ -63,7 +63,7 @@ public class CarService : ICarService
         {
             Id = car.Id,
             Engine = car.Engine,
-            ModelInfo = car.ModelInfo,
+            ModelInfo = car.Model,
             Vin = car.Vin,
             DistanceDrivenInKilometers = car.DistanceDrivenInKilometers,
             LicencePlate = car.LicencePlate,

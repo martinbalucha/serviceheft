@@ -27,9 +27,9 @@ public class EntityFrameworkRepositoryTest
     public async Task FindAsync_ExistingCar_CorrectCarReturned()
     {
         // Arrange
-        var modelInfo = new ModelInfo("Citroen", "C5");
+        var model = new Model("Citroen", "C5", "X7");
         var engine = new Engine("RHR", FuelType.Diesel, 1997, 120);
-        var car = new Car(Guid.NewGuid(), "VF701234567891234", modelInfo, DateTime.Now, "2AB0373", 193000, engine);
+        var car = new Car(Guid.NewGuid(), "VF701234567891234", model, DateTime.Now, "2AB0373", 193000, engine);
 
         _dbContext.Setup(c => c.FindAsync<Car>(car.Id)).ReturnsAsync(car);
 
@@ -54,9 +54,9 @@ public class EntityFrameworkRepositoryTest
     public async Task CreateAsync_ValidCar_CarCreated()
     {
         // Arrange
-        var modelInfo = new ModelInfo("Citroen", "C5");
+        var model = new Model("Citroen", "C5", "X7");
         var engine = new Engine("RHR", FuelType.Diesel, 1997, 120);
-        var car = new Car(Guid.NewGuid(), "VF701234567891234", modelInfo, DateTime.Now, "2AB0373", 193000, engine);
+        var car = new Car(Guid.NewGuid(), "VF701234567891234", model, DateTime.Now, "2AB0373", 193000, engine);
 
         // Act
         await _repository.CreateAsync(car);
@@ -69,9 +69,9 @@ public class EntityFrameworkRepositoryTest
     public async Task UpdateAsync_NonexistentCar_ExceptionThrown()
     {
         // Arrange
-        var modelInfo = new ModelInfo("Citroen", "C5");
+        var model = new Model("Citroen", "C5", "X7");
         var engine = new Engine("RHR", FuelType.Diesel, 1997, 120);
-        var car = new Car(Guid.NewGuid(), "VF701234567891234", modelInfo, DateTime.Now, "2AB0373", 193000, engine);
+        var car = new Car(Guid.NewGuid(), "VF701234567891234", model, DateTime.Now, "2AB0373", 193000, engine);
 
         // Act & Assert
         await Assert.ThrowsAsync<NotFoundException>(() => _repository.UpdateAsync(car));
@@ -82,11 +82,11 @@ public class EntityFrameworkRepositoryTest
     public async Task UpdateAsync_ExistingCar_CarUpdated()
     {
         // Arrange
-        var modelInfo = new ModelInfo("Citroen", "C5");
+        var model = new Model("Citroen", "C5", "X7");
         var engine = new Engine("RHR", FuelType.Diesel, 1997, 120);
-        var storedCar = new Car(Guid.NewGuid(), "VF701234567891234", modelInfo, DateTime.Now, "2AB0373", 193000, engine);
+        var storedCar = new Car(Guid.NewGuid(), "VF701234567891234", model, DateTime.Now, "2AB0373", 193000, engine);
 
-        var updatedCar = new Car(storedCar.Id, storedCar.Vin, modelInfo, storedCar.ProducedOn, "2BM8421", 220000, engine);
+        var updatedCar = new Car(storedCar.Id, storedCar.Vin, model, storedCar.ProducedOn, "2BM8421", 220000, engine);
 
         _dbContext.Setup(c => c.FindAsync<Car>(storedCar.Id)).ReturnsAsync(storedCar);
 
@@ -128,11 +128,11 @@ public class EntityFrameworkRepositoryTest
 
         var storedCars = new List<Car>
         {
-            new Car(Guid.NewGuid(), "VF701234567891234", new ModelInfo("Citroen", "C5"), DateTime.Now, "2AB0373", 193000, 
+            new Car(Guid.NewGuid(), "VF701234567891234", new Model("Citroen", "C5", "X7"), DateTime.Now, "2AB0373", 193000, 
                     new Engine("2.0 HDI 163k", FuelType.Diesel, 1997, 120)),
-            new Car(Guid.NewGuid(), "WBE01234567891234", new ModelInfo("BMW", "E46"), DateTime.Now, "2MA03479", 324000,
+            new Car(Guid.NewGuid(), "WBE01234567891234", new Model("BMW", "330i", "E46"), DateTime.Now, "2MA03479", 324000,
                     new Engine("M54", FuelType.Petrol, 2997, 170)),
-            new Car(Guid.NewGuid(), "TEP01234567891234", new ModelInfo("Opel", "Insignia"), DateTime.Now, "2PT03479", 93000,
+            new Car(Guid.NewGuid(), "TEP01234567891234", new Model("Opel", "Insignia", "H"), DateTime.Now, "2PT03479", 93000,
                     new Engine("Unbekannt", FuelType.Diesel, 1997, 133)),
 
         }.AsQueryable();
