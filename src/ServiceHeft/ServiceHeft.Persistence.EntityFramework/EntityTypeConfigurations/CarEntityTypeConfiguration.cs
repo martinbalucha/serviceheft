@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ServiceHeft.Maintenance.Contracts.Automotive;
 
-namespace ServiceHeft.Persistence.EntityFramework.Configurations;
+namespace ServiceHeft.Persistence.EntityFramework.EntityConfigurations;
 
 public class CarEntityTypeConfiguration : IEntityTypeConfiguration<Car>
 {
