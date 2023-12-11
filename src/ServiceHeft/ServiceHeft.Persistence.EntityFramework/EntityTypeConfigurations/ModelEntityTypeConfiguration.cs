@@ -9,7 +9,7 @@ public class ModelEntityTypeConfiguration : IEntityTypeConfiguration<Model>
 {
     private const int ModelNameMaxLength = 40;
 
-    private readonly ISeedingDataRepository<Model> _repository;
+    private readonly ISeedingDataRepository<Model> _repository; //TODO: don't like this very much
 
     public ModelEntityTypeConfiguration(ISeedingDataRepository<Model> repository)
     {

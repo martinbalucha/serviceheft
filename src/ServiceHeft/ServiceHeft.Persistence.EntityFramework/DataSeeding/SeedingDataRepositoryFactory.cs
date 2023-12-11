@@ -3,7 +3,7 @@ using System.IO.Abstractions;
 
 namespace ServiceHeft.Persistence.EntityFramework.DataSeeding;
 
-public class SeedingDataRepositoryFactory
+public class SeedingDataRepositoryFactory : ISeedingDataRepositoryFactory
 {
     private const string DataSeedingSectionName = "DataSeeding";
 
