@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using System.IO.Abstractions;
+﻿using System.IO.Abstractions;
 using System.Runtime.Serialization;
 using System.Text.Json;
 
@@ -10,12 +9,10 @@ public class SeedingDataRepository<T> : ISeedingDataRepository<T> where T : clas
     private readonly IFile _file;
     private readonly DataSeedingConfiguration _dataSeedingConfiguration;
 
-    public SeedingDataRepository(IFile file, IOptions<DataSeedingConfiguration> dataSeedingConfiguration)
+    public SeedingDataRepository(IFile file, DataSeedingConfiguration dataSeedingConfiguration)
     {
         _file = file ?? throw new ArgumentNullException(nameof(file));
-
-        ArgumentNullException.ThrowIfNull(dataSeedingConfiguration);
-        _dataSeedingConfiguration = dataSeedingConfiguration.Value;
+        _dataSeedingConfiguration = dataSeedingConfiguration ?? throw new ArgumentNullException(nameof(dataSeedingConfiguration));
     }
 
     public IEnumerable<T> Read()
