@@ -41,7 +41,9 @@ builder.Services.AddSingleton<ICarService, CarService>();
 builder.Services.AddSingleton<IRepository<Car>, EntityFrameworkRepository<Car>>();
 builder.Services.AddSingleton<IUnitOfWork, EntityFrameworkUnitOfWork>();
 builder.Services.AddSingleton<ISeedingDataRepositoryFactory, SeedingDataRepositoryFactory>();
+
 builder.Services.AddSingleton<IFile, FileWrapper>();
+builder.Services.AddSingleton<IFileSystem, FileSystem>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
