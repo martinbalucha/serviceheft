@@ -8,6 +8,7 @@ using ServiceHeft.Persistence.EntityFramework.DataAccess;
 using ServiceHeft.Persistence.EntityFramework.DataSeeding;
 using ServiceHeft.Server.Application.Configuration;
 using ServiceHeft.Webservice.CarMaintenance;
+using System.IO.Abstractions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,7 @@ builder.Services.AddSingleton<ICarService, CarService>();
 builder.Services.AddSingleton<IRepository<Car>, EntityFrameworkRepository<Car>>();
 builder.Services.AddSingleton<IUnitOfWork, EntityFrameworkUnitOfWork>();
 builder.Services.AddSingleton<ISeedingDataRepositoryFactory, SeedingDataRepositoryFactory>();
+builder.Services.AddSingleton<IFile, FileWrapper>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
