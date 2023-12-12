@@ -5,6 +5,7 @@ using ServiceHeft.Maintenance.Contracts.Common.Persistence;
 using ServiceHeft.Maintenance.Domain.Automotive;
 using ServiceHeft.Persistence.EntityFramework;
 using ServiceHeft.Persistence.EntityFramework.DataAccess;
+using ServiceHeft.Persistence.EntityFramework.DataSeeding;
 using ServiceHeft.Server.Application.Configuration;
 using ServiceHeft.Webservice.CarMaintenance;
 
@@ -37,7 +38,7 @@ builder.Services.AddSingleton<ICarService, CarService>();
 // Persistence
 builder.Services.AddSingleton<IRepository<Car>, EntityFrameworkRepository<Car>>();
 builder.Services.AddSingleton<IUnitOfWork, EntityFrameworkUnitOfWork>();
-
+builder.Services.AddSingleton<ISeedingDataRepositoryFactory, SeedingDataRepositoryFactory>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

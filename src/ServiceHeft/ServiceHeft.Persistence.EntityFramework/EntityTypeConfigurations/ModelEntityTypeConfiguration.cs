@@ -11,9 +11,11 @@ public class ModelEntityTypeConfiguration : IEntityTypeConfiguration<Model>
 
     private readonly ISeedingDataRepository<Model> _repository; //TODO: don't like this very much
 
-    public ModelEntityTypeConfiguration(ISeedingDataRepository<Model> repository)
+    public ModelEntityTypeConfiguration(ISeedingDataRepositoryFactory seedingDataRepositoryFactory)
     {
-        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        ArgumentNullException.ThrowIfNull(nameof(seedingDataRepositoryFactory));
+
+        _repository = seedingDataRepositoryFactory.Create<Model>();
     }
 
     public void Configure(EntityTypeBuilder<Model> builder)
