@@ -29,4 +29,8 @@
     <ProjectReference Include="..\ServiceHeft.Webservice\ServiceHeft.Maintenance.Webservice.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataSeeding\" />
+  </ItemGroup>
+
 </Project>

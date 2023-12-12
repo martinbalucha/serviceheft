@@ -9,14 +9,15 @@ public class ModelEntityTypeConfiguration : IEntityTypeConfiguration<Model>
 {
     private const int ModelNameMaxLength = 40;
 
-    private readonly ISeedingDataRepository<Model> _repository; //TODO: don't like this very much
+    //private readonly ISeedingDataRepository<Model> _repository; //TODO: don't like this very much
 
-    public ModelEntityTypeConfiguration(ISeedingDataRepositoryFactory seedingDataRepositoryFactory)
-    {
-        ArgumentNullException.ThrowIfNull(nameof(seedingDataRepositoryFactory));
+    //public ModelEntityTypeConfiguration(ISeedingDataRepositoryFactory seedingDataRepositoryFactory)
+    //{
+        
+    //    ArgumentNullException.ThrowIfNull(nameof(seedingDataRepositoryFactory));
 
-        _repository = seedingDataRepositoryFactory.Create<Model>();
-    }
+    //    _repository = seedingDataRepositoryFactory.Create<Model>();
+    //}
 
     public void Configure(EntityTypeBuilder<Model> builder)
     {
@@ -24,8 +25,8 @@ public class ModelEntityTypeConfiguration : IEntityTypeConfiguration<Model>
         builder.Property(m => m.InternalName).HasMaxLength(ModelNameMaxLength);
         builder.Property(m => m.OfficialName).HasMaxLength(ModelNameMaxLength);
 
-        var seedModels = _repository.Read();
+        //var seedModels = _repository.Read();
 
-        builder.HasData(seedModels);
+        //builder.HasData(seedModels);
     }
 }

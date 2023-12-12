@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("SqlServerConfiguration.json");
 builder.Configuration.AddJsonFile("loggerSettings.json");
+builder.Configuration.AddJsonFile("DataSeedingConfigurations.json");
 
 // Add services to the container.
 

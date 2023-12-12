@@ -7,9 +7,9 @@ namespace ServiceHeft.Persistence.EntityFramework.DataAccess;
 
 public class ServiceHeftDbContext : DbContext
 {
-    protected DbSet<ServiceRecord> ServiceRecords { get; init; }
-    protected DbSet<Car> Cars { get; init; }
-    protected DbSet<Autopart> Autoparts { get; init; }
+    public DbSet<ServiceRecord> ServiceRecords { get; init; }
+    public DbSet<Car> Cars { get; init; }
+    public DbSet<Autopart> Autoparts { get; init; }
 
     public ServiceHeftDbContext(DbContextOptions<ServiceHeftDbContext> options) : base(options)
     {    
