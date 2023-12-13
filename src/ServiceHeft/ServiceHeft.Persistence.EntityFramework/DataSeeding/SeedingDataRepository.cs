@@ -19,17 +19,19 @@ public class SeedingDataRepository<T> : ISeedingDataRepository<T> where T : clas
     {
         string jsonString = _file.ReadAllText(_dataSeedingConfiguration.SeedingFilePath);
 
-        return ReadCore(jsonString);
+        return Deserialize(jsonString);
     }
 
-    public async Task<IEnumerable<T>> ReadAsync()
+    public async Task<IEnumerable<T>> ReadAsync(CancellationToken cancellationToken = default)
     {
+        cancellationToken.ThrowIfCancellationRequested();
+
         string jsonString = await _file.ReadAllTextAsync(_dataSeedingConfiguration.SeedingFilePath);
 
-        return ReadCore(jsonString);
+        return Deserialize(jsonString);
     }
 
-    private static IEnumerable<T> ReadCore(string jsonString)
+    private static IEnumerable<T> Deserialize(string jsonString)
     {
         var data = JsonSerializer.Deserialize<List<T>>(jsonString)
             ?? throw new SerializationException("An error occurred during the file deserialization.");
