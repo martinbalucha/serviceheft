@@ -69,6 +69,23 @@ public class SeedingDataRepositoryTest
     }
 
     [Fact]
+    public void Read_NoDataStored_EmptyCollectionReturned()
+    {
+        // Arrange
+        var storedData = Enumerable.Empty<Model>();
+
+        var dataInJson = JsonSerializer.Serialize(storedData);
+
+        _file.Setup(f => f.ReadAllText(_dataSeedingConfiguration.SeedingFilePath)).Returns(dataInJson);
+
+        // Act
+        var result = _repository.Read();
+
+        // Assert
+        result.Should().BeEquivalentTo(storedData);
+    }
+
+    [Fact]
     public async Task ReadAsync_OperationCancelled_ExceptionThrown()
     {
         // Arrange
