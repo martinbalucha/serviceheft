@@ -13,7 +13,6 @@ public class ModelEntityTypeConfiguration : IEntityTypeConfiguration<Model>
 
     public ModelEntityTypeConfiguration(ISeedingDataRepositoryFactory seedingDataRepositoryFactory)
     {
-
         ArgumentNullException.ThrowIfNull(nameof(seedingDataRepositoryFactory));
 
         _repository = seedingDataRepositoryFactory.Create<Model>();
@@ -25,7 +24,7 @@ public class ModelEntityTypeConfiguration : IEntityTypeConfiguration<Model>
         builder.Property(m => m.InternalName).HasMaxLength(ModelNameMaxLength);
         builder.Property(m => m.OfficialName).HasMaxLength(ModelNameMaxLength);
 
-        ////var seedModels = _repository.Read();
-        ////builder.HasData(seedModels);
+        var seedModels = _repository.Read();
+        builder.HasData(seedModels);
     }
 }

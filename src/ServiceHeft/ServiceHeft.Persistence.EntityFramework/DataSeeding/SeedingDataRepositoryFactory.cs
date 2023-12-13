@@ -20,15 +20,29 @@ public class SeedingDataRepositoryFactory : ISeedingDataRepositoryFactory
     {
         var dataSeedingConfiguration = GetSeedingConfigurationForType<T>();
 
+        CheckIfConfigurationIsValid(dataSeedingConfiguration);
+
         return new SeedingDataRepository<T>(_file, dataSeedingConfiguration);
     }
 
-    private DataSeedingConfiguration GetSeedingConfigurationForType<T>()
+    private DataSeedingConfiguration? GetSeedingConfigurationForType<T>()
     {
-        var typeSeedingConfiguration = _configuration.GetSection(DataSeedingSectionName)?.GetSection(typeof(T).Name)
-            ?? throw new ArgumentException("Invalid configuration for data seeding.");
+        var typeSeedingConfiguration = _configuration.GetSection(DataSeedingSectionName).GetSection(typeof(T).Name);
 
-        return typeSeedingConfiguration.Get<DataSeedingConfiguration>()
-            ?? throw new ArgumentException("Invalid configuration for data seeding."); ;
+        var configuration = typeSeedingConfiguration.GetSection(nameof(DataSeedingConfiguration)).Get<DataSeedingConfiguration>();
+        
+        return configuration;
+    }
+
+    private static void CheckIfConfigurationIsValid(DataSeedingConfiguration? dataSeedingConfiguration)
+    {
+        if (dataSeedingConfiguration is null)
+        {
+            throw new ArgumentException("Invalid configuration for data seeding.");
+        }
+        if (string.IsNullOrWhiteSpace(dataSeedingConfiguration.SeedingFilePath))
+        {
+            throw new ArgumentException($"The property '{nameof(dataSeedingConfiguration.SeedingFilePath)}' cannot be empty or whitespace.");
+        }
     }
 }

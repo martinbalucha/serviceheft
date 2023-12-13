@@ -2,5 +2,5 @@
 
 public record DataSeedingConfiguration
 {
-    public string SeedingFilePath { get; init; } = string.Empty;
+    public required string SeedingFilePath { get; init; }
 }
