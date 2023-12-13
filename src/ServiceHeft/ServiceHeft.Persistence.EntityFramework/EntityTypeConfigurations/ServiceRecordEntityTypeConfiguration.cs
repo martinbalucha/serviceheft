@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ServiceHeft.Maintenance.Contracts.Maintenance;
 
-namespace ServiceHeft.Persistence.EntityFramework.Configurations;
+namespace ServiceHeft.Persistence.EntityFramework.EntityConfigurations;
 
 public class ServiceRecordEntityTypeConfiguration : IEntityTypeConfiguration<ServiceRecord>
 {

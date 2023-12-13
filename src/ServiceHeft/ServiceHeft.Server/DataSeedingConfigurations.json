@@ -1,0 +1,9 @@
+{
+  "DataSeeding": {
+    "Model": {
+      "DataSeedingConfiguration": {
+        "SeedingFilePath": "DataSeeding/models.json"
+      }
+    }
+  }
+}

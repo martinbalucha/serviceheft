@@ -1,18 +1,20 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Serilog;
 using ServiceHeft.Maintenance.Contracts.Automotive;
 using ServiceHeft.Maintenance.Contracts.Common.Persistence;
 using ServiceHeft.Maintenance.Domain.Automotive;
 using ServiceHeft.Persistence.EntityFramework;
 using ServiceHeft.Persistence.EntityFramework.DataAccess;
+using ServiceHeft.Persistence.EntityFramework.DataSeeding;
 using ServiceHeft.Server.Application.Configuration;
 using ServiceHeft.Webservice.CarMaintenance;
+using System.IO.Abstractions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("SqlServerConfiguration.json");
 builder.Configuration.AddJsonFile("loggerSettings.json");
+builder.Configuration.AddJsonFile("DataSeedingConfigurations.json");
 
 // Add services to the container.
 
@@ -38,10 +40,16 @@ builder.Services.AddSingleton<ICarService, CarService>();
 // Persistence
 builder.Services.AddSingleton<IRepository<Car>, EntityFrameworkRepository<Car>>();
 builder.Services.AddSingleton<IUnitOfWork, EntityFrameworkUnitOfWork>();
+builder.Services.AddSingleton<ISeedingDataRepositoryFactory, SeedingDataRepositoryFactory>();
+
+builder.Services.AddSingleton<IFile, FileWrapper>();
+builder.Services.AddSingleton<IFileSystem, FileSystem>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 
 // Logging
 builder.Host.UseSerilog((ctx, config) =>
