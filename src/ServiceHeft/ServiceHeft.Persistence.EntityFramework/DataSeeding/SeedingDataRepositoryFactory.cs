@@ -22,7 +22,7 @@ public class SeedingDataRepositoryFactory : ISeedingDataRepositoryFactory
 
         CheckIfConfigurationIsValid(dataSeedingConfiguration);
 
-        return new SeedingDataRepository<T>(_file, dataSeedingConfiguration);
+        return new SeedingDataRepository<T>(_file, dataSeedingConfiguration!);
     }
 
     private DataSeedingConfiguration? GetSeedingConfigurationForType<T>()
