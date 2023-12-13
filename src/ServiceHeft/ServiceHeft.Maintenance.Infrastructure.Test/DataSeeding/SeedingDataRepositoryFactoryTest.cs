@@ -39,4 +39,71 @@ public class SeedingDataRepositoryFactoryTest
         // Assert
         Assert.IsType<SeedingDataRepository<Model>>(repository);
     }
+
+    [Fact]
+    public void Create_EmptyFilePath_ExceptionThrown()
+    {
+        // Arrange
+        var appSettings = new
+        {
+            DataSeeding = new
+            {
+                Model = new
+                {
+                    DataSeedingConfiguration = new
+                    {
+                        SeedingFilePath = string.Empty
+                    }
+                }
+            }
+        };
+
+        var configuration = TestConfigurationBuilder.Build(appSettings);
+
+        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(file.Object, configuration);
+
+        // Act & Assert
+        Assert.Throws<ArgumentException>(seedingDataRepositoryFactory.Create<Model>);
+    }
+
+    [Fact]
+    public void Create_MissingDataSeedingConfigurationSection_ExceptionThrown()
+    {
+        // Arrange
+        var appSettings = new
+        {
+            DataSeeding = new
+            {
+                Model = new
+                {
+                }
+            }
+        };
+
+        var configuration = TestConfigurationBuilder.Build(appSettings);
+
+        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(file.Object, configuration);
+
+        // Act & Assert
+        Assert.Throws<ArgumentException>(seedingDataRepositoryFactory.Create<Model>);
+    }
+
+    [Fact]
+    public void Create_MissingEntityNameSection_ExceptionThrown()
+    {
+        // Arrange
+        var appSettings = new
+        {
+            DataSeeding = new
+            {
+            }
+        };
+
+        var configuration = TestConfigurationBuilder.Build(appSettings);
+
+        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(file.Object, configuration);
+
+        // Act & Assert
+        Assert.Throws<ArgumentException>(seedingDataRepositoryFactory.Create<Model>);
+    }
 }
