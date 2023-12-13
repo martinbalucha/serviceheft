@@ -9,7 +9,7 @@ namespace ServiceHeft.Maintenance.Infrastructure.Test.DataSeeding;
 
 public class SeedingDataRepositoryFactoryTest
 {
-    private readonly Mock<IFile> file = new();
+    private readonly Mock<IFile> _file = new();
 
     [Fact]
     public void Create_ValidConfiguration_RepositoryCreated()
@@ -31,7 +31,7 @@ public class SeedingDataRepositoryFactoryTest
 
         var configuration = TestConfigurationBuilder.Build(appSettings);
 
-        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(file.Object, configuration);
+        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(_file.Object, configuration);
 
         // Act
         var repository = seedingDataRepositoryFactory.Create<Model>();
@@ -60,7 +60,7 @@ public class SeedingDataRepositoryFactoryTest
 
         var configuration = TestConfigurationBuilder.Build(appSettings);
 
-        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(file.Object, configuration);
+        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(_file.Object, configuration);
 
         // Act & Assert
         Assert.Throws<ArgumentException>(seedingDataRepositoryFactory.Create<Model>);
@@ -82,7 +82,7 @@ public class SeedingDataRepositoryFactoryTest
 
         var configuration = TestConfigurationBuilder.Build(appSettings);
 
-        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(file.Object, configuration);
+        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(_file.Object, configuration);
 
         // Act & Assert
         Assert.Throws<ArgumentException>(seedingDataRepositoryFactory.Create<Model>);
@@ -101,7 +101,7 @@ public class SeedingDataRepositoryFactoryTest
 
         var configuration = TestConfigurationBuilder.Build(appSettings);
 
-        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(file.Object, configuration);
+        var seedingDataRepositoryFactory = new SeedingDataRepositoryFactory(_file.Object, configuration);
 
         // Act & Assert
         Assert.Throws<ArgumentException>(seedingDataRepositoryFactory.Create<Model>);
