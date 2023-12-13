@@ -67,4 +67,15 @@ public class SeedingDataRepositoryTest
         // Assert
         result.Should().BeEquivalentTo(storedData);
     }
+
+    [Fact]
+    public async Task ReadAsync_OperationCancelled_ExceptionThrown()
+    {
+        // Arrange
+        var cancellationTokenSource = new CancellationTokenSource();
+        cancellationTokenSource.Cancel();
+
+        // Act & Assert
+        await Assert.ThrowsAsync<OperationCanceledException>(() => _repository.ReadAsync(cancellationTokenSource.Token));
+    }
 }
